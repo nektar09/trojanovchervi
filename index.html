@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Иван Троянов</title>
+    
+    <style>
+        /* --- 1. Глобальные Стили и Градиентный Фон --- */
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            color: #333;
+            
+            /* Минималистичный, но динамичный градиент */
+            background: linear-gradient(135deg, 
+                #a1c4fd 0%, /* Светло-голубой */
+                #c2e9fb 50%, /* Более светлый */
+                #ff9a9e 100%  /* Розовый/красный */
+            );
+            background-size: 400% 400%;
+            animation: gradientAnimation 15s ease infinite; /* Анимация градиента */
+        }
+
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* --- 2. Стиль Центральной Рамки (Карточки) --- */
+        .content-box {
+            background: rgba(255, 255, 255, 0.85); /* Белый с легкой прозрачностью */
+            backdrop-filter: blur(10px); /* Эффект "матового стекла" */
+            border-radius: 20px;
+            padding: 50px 60px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.4); /* Светлая рамка */
+            max-width: 90%;
+        }
+
+        /* --- 3. Текст и Кнопка --- */
+        .name {
+            font-size: 2.5em;
+            font-weight: 700;
+            margin-bottom: 30px;
+            color: #222;
+            letter-spacing: 1px;
+        }
+
+        .worm-button {
+            background: #333; /* Черный цвет для кнопки */
+            color: white;
+            border: none;
+            border-radius: 10px;
+            padding: 14px 40px;
+            font-size: 1.2em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.1s;
+            text-transform: uppercase;
+        }
+
+        .worm-button:hover {
+            background: #1a1a1a;
+        }
+
+        .worm-button:active {
+            transform: scale(0.98); /* Легкий эффект нажатия */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="content-box">
+        
+        <div class="name">
+            ИВАН ТРОЯНОВ
+        </div>
+
+        <button id="wormBtn" class="worm-button">
+            Червь
+        </button>
+        
+    </div>
+
+    <!-- Аудио элемент, который мы будем использовать -->
+    <audio id="wormSound" src="stony-10-312sh3.mp3" preload="auto"></audio>
+
+    <script>
+        // --- JavaScript для Воспроизведения Звука ---
+        
+        const button = document.getElementById('wormBtn');
+        const sound = document.getElementById('wormSound');
+
+        button.addEventListener('click', function() {
+            // Пытаемся воспроизвести звук
+            sound.play()
+                .then(() => {
+                    console.log("Звук 'Червь' воспроизведен.");
+                })
+                .catch(error => {
+                    // Обработка ошибки, если браузер блокирует автовоспроизведение
+                    console.error("Ошибка воспроизведения звука. Возможно, требуется дополнительное взаимодействие с пользователем.", error);
+                    // Можно добавить временное уведомление для пользователя
+                });
+        });
+    </script>
+
+</body>
+</html>
